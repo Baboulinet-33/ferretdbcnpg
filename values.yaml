@@ -39,13 +39,15 @@ resources:
     memory: 128Mi
 
 livenessProbe:
-  httpGet:
-    path: /
-    port: http
+  exec:
+    command:
+    - cat
+    - /app/index.js
 readinessProbe:
-  httpGet:
-    path: /
-    port: http
+  exec:
+    command:
+    - cat
+    - /app/index.js
 
 env:
   MONGO_DB_URI: "mongodb://app:TxVeQ4nN82SSiYHoswqOURZvQDaL4KpNElsCEEe9bwDxMd73KckIeXzS5cU6LiC2@ferretdb:27017"
