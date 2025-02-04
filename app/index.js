@@ -10,9 +10,9 @@ client = new MongoClient(mongouri);
 
 async function run() {
   try {
-    let res = await client.db('test').command({ ping: 1 });
+    let res = await client.db('app').command({ ping: 1 });
     assert.equal(res.ok, 1, 'ping failed');
-    res = await client.db('test').command({ dropDatabase: 1 });
+    res = await client.db('app').command({ dropDatabase: 1 });
     assert.equal(res.ok, 1, 'dropDatabase failed');
     
     let docs = [];
@@ -20,13 +20,13 @@ async function run() {
       docs.push({ _id: i, a: i });
     }
 
-    res = await client.db('test').collection('foo').insertMany(docs);
+    res = await client.db('app').collection('foo').insertMany(docs);
     assert.equal(res.insertedCount, 4);
 
-    const actual = await client.db('test').collection('foo').findOne({ a: 4 });
+    const actual = await client.db('app').collection('foo').findOne({ a: 4 });
     assert.equal(actual.a, 4, 'Value should be 4');
 
-    const cursor = await client.db('test').collection('foo').find();
+    const cursor = await client.db('app').collection('foo').find();
     for await (const doc of cursor) {
         console.log(doc);
     }

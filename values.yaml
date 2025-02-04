@@ -52,7 +52,7 @@ env:
 
 ferretdb:
   env:
-    FERRETDB_POSTGRESQL_URL: "postgresql://app@cnpg-app-rw:5432"
+    FERRETDB_POSTGRESQL_URL: "postgresql://app@cnpg-app-rw:5432/app"
     FERRETDB_AUTH: false
 
 pgadmin4:
