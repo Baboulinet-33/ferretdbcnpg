@@ -6,6 +6,8 @@ data:
 kind: Secret
 metadata:
   name: cluster-example-app-user
+  annotations:
+    argocd.argoproj.io/sync-wave: "-100"
 type: kubernetes.io/basic-auth
 ---
 apiVersion: v1
@@ -15,4 +17,6 @@ data:
 kind: Secret
 metadata:
   name: cluster-example-superuser
+  annotations:
+    argocd.argoproj.io/sync-wave: "-100"
 type: kubernetes.io/basic-auth
