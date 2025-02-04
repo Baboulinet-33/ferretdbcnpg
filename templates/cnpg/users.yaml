@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+data:
+  password: VHhWZVE0bk44MlNTaVlIb3N3cU9VUlp2UURhTDRLcE5FbHNDRUVlOWJ3RHhNZDczS2NrSWVYelM1Y1U2TGlDMg== # TxVeQ4nN82SSiYHoswqOURZvQDaL4KpNElsCEEe9bwDxMd73KckIeXzS5cU6LiC2
+  username: YXBw
+kind: Secret
+metadata:
+  name: cluster-example-app-user
+type: kubernetes.io/basic-auth
+---
+apiVersion: v1
+data:
+  password: dU4zaTFIaDBiWWJDYzRUeVZBYWNCaG1TemdxdHpxeG1PVmpBbjBRSUNoc0pyU211OVBZMmZ3MnE4RUtLTHBaOQ== # uN3i1Hh0bYbCc4TyVAacBhmSzgqtzqxmOVjAn0QIChsJrSmu9PY2fw2q8EKKLpZ9
+  username: cG9zdGdyZXM=
+kind: Secret
+metadata:
+  name: cluster-example-superuser
+type: kubernetes.io/basic-auth

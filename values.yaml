@@ -1,0 +1,117 @@
+
+replicaCount: 1
+
+image:
+  repository: myapp
+  pullPolicy: IfNotPresent
+  tag: ""
+
+imagePullSecrets:
+- name: registry-pull-secret
+nameOverride: ""
+fullnameOverride: "myapp"
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 8080
+
+ingress:
+  enabled: false
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+
+resources: 
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
+env:
+  MONGO_DB_URI: "mongodb://app:TxVeQ4nN82SSiYHoswqOURZvQDaL4KpNElsCEEe9bwDxMd73KckIeXzS5cU6LiC2@ferretdb:27017"
+
+ferretdb:
+  env:
+    FERRETDB_POSTGRESQL_URL: "postgresql://app@cnpg-app-rw:5432"
+
+pgadmin4:
+  enabled: false
+  image:
+    repository: bnoleau/pgadmin-rootless
+    registry: harbor.apps.dso.numerique-interieur.com/dockerhub
+    tag: 8.12
+  fullnameOverride: pgadmin
+  strategy:
+    type: Recreate
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "250m"
+    limits:
+      memory: "256Mi"
+      cpu: "500m"
+  VolumePermissions:
+    enabled: false
+  persistentVolume:
+    size: 100Mi
+  startupProbe:
+    failureThreshold: 30
+    periodSeconds: 10
+  init:
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "250m"
+  securityContext: ""
+  containerSecurityContext:
+    enabled: false
+  podSecurityContext:
+    enabled: false
+  env:
+    email:  pgadmin@ferretdb.minint.fr
+  envVarsExtra:
+    - name: PGADMIN_DISABLE_POSTFIX
+      value: "1"
+    - name: PGADMIN_LISTEN_PORT
+      value: "5050"
+  servicePort: &servicePort 5050
+  containerPorts:
+    http: *servicePort
+  service:
+    type: ClusterIP
+    port: *servicePort
+    targetPort: *servicePort
+  existingSecret: pgadmin-user
+  servers:
+    firstServer:
+      Name: "app"
+      Group: "Servers"
+      Port: 5432
+      Username: "app"
+      Password: "uN3i1Hh0bYbCc4TyVAacBhmSzgqtzqxmOVjAn0QIChsJrSmu9PY2fw2q8EKKLpZ9"
+      Host: "cnpg-app-rw"
+      SSLMode: "prefer"
+      MaintenanceDB: "postgres"

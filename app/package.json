@@ -1,0 +1,15 @@
+{
+    "name": "nodejs-example",
+    "version": "1.0.0",
+    "description": "This is a fork of https://github.com/FerretDB/nodejs-example, simplified to run with FerretDB.",
+    "main": "index.js",
+    "scripts": {
+      "test": ""
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "mongodb": "^6.11.0"
+    }
+  }

@@ -1,0 +1,31 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cnpg-app
+spec:
+  description: "Example of cluster"
+  instances: 1
+  startDelay: 300
+  stopDelay: 300
+  primaryUpdateStrategy: unsupervised
+
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+      secret:
+        name: cluster-example-app-user
+
+  superuserSecret:
+    name: cluster-example-superuser
+
+  storage:
+    size: 1Gi
+
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+    limits:
+      memory: "256Mi"
+      cpu: "200m"
