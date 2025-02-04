@@ -51,6 +51,8 @@ env:
   MONGO_DB_URI: "mongodb://app:TxVeQ4nN82SSiYHoswqOURZvQDaL4KpNElsCEEe9bwDxMd73KckIeXzS5cU6LiC2@ferretdb:27017"
 
 ferretdb:
+  image:
+    tag:  v1.24.0
   env:
     FERRETDB_POSTGRESQL_URL: "postgresql://app:TxVeQ4nN82SSiYHoswqOURZvQDaL4KpNElsCEEe9bwDxMd73KckIeXzS5cU6LiC2@cnpg-app-rw:5432/app"
     FERRETDB_AUTH: false
