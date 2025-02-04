@@ -119,3 +119,10 @@ pgadmin4:
       Host: "cnpg-app-rw"
       SSLMode: "prefer"
       MaintenanceDB: "postgres"
+  ingress:
+    enabled: true
+    hosts:
+      - host: ferret-pgadmin.apps.app1.numerique-interieur.com
+        paths:
+          - path: /
+            pathType: Prefix
