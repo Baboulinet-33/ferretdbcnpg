@@ -56,8 +56,7 @@ ferretdb:
   image:
     tag:  1.24.0
   env:
-    FERRETDB_POSTGRESQL_URL: "postgresql://app:TxVeQ4nN82SSiYHoswqOURZvQDaL4KpNElsCEEe9bwDxMd73KckIeXzS5cU6LiC2@cnpg-app-rw:5432/app"
-    FERRETDB_AUTH: false
+    FERRETDB_POSTGRESQL_URL: "postgresql://app:SCRAM-SHA-256$4096:Vti9epb/59qIW124eLq78A==$keaRvEgIAteIuySnXx/I3NBscQ+AGypFxjFEIql3oYk=:+aFzQSwFWxKp2CriNffI8DDsUCgZTypo9BNbd35uST8=@cnpg-app-rw:5432/app"
 
 pgadmin4:
   enabled: false
