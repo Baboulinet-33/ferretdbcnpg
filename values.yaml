@@ -2,7 +2,7 @@
 replicaCount: 1
 
 image:
-  repository: myapp
+  repository: harbor.apps.dso.numerique-interieur.com/mc-ferret/myapp
   pullPolicy: IfNotPresent
   tag: "1.0"
 
